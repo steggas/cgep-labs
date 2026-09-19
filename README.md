@@ -1,4 +1,4 @@
-﻿# cgep-labs
+# cgep-labs
 
 Personal lab workspace for the Certified GRC Engineer Practitioner (CGE-P).
 
