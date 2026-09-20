@@ -6,3 +6,4 @@ Every lab drops code under `terraform/` (or `scripts/` / policies in later labs)
 
 - Lab 2.3: `terraform/primitives/compliant-s3`
 - Lab 2.4: `terraform/modules/compliant-gcs-bucket` (consumers: `terraform/primitives/compliant-gcs`, `compliant-gcs-prod`, `compliant-gcs-negative`)
+- Lab 2.5: `terraform/primitives/evidence-vault` + `scripts/capture-evidence.sh` (receipt: `evidence/lab-2-5/receipt.json`)
