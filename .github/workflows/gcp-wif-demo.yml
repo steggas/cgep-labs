@@ -1,0 +1,30 @@
+# Lab 5.4 — demonstrate key-free GCP auth via Workload Identity Federation.
+# No service-account JSON key is stored in the repo or in GitHub secrets.
+name: gcp-wif-demo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  gcp-auth:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/517865806526/locations/global/workloadIdentityPools/github-actions/providers/github
+          service_account: cgep-grc-gate-sa@grc-eng-club.iam.gserviceaccount.com
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Prove identity (read-only)
+        run: |
+          gcloud auth list
+          gcloud projects describe grc-eng-club --format='value(projectId)'
